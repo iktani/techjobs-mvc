@@ -38,6 +38,20 @@
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
+    <div th:fragment="job-listings" th:if="${matches != null}">
+        <h3 th:text="${matches.size()+ ' Result(s)'}">Results</h3>
+        <table th:each="jobMatch : ${matches}" class="job-listing">
+            <tr th:each="rowName : ${jobMatch.keySet()}">
+                <td th:text="${rowName}">Job Field</td>
+                <td th:text="${jobMatch.get(rowName)}">Job Value</td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
 </div>
 
 </body>
