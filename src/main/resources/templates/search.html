@@ -20,7 +20,7 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == searchType}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
@@ -42,7 +42,7 @@
         <h3 th:text="${matches.size()+ ' Result(s)'}">Results</h3>
         <table th:each="jobMatch : ${matches}" class="job-listing">
             <tr th:each="rowName : ${jobMatch.keySet()}">
-                <td th:text="${rowName}">Job Field</td>
+                <td th:text="${#strings.capitalizeWords(rowName)}">Job Field</td>
                 <td th:text="${jobMatch.get(rowName)}">Job Value</td>
             </tr>
 
