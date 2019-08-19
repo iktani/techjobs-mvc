@@ -43,10 +43,9 @@
         <table th:each="jobMatch : ${matches}" class="job-listing">
             <tr th:each="rowName : ${jobMatch.keySet()}">
                 <td th:text="${#strings.capitalizeWords(rowName)}">Job Field</td>
-                <td th:text="${jobMatch.get(rowName)}">Job Value</td>
+                <td th:if="${rowName == 'name'}" th:text="${jobMatch.get(rowName)}"></td>
+                <td th:unless="${rowName == 'name'}"><a th:href="@{/list/jobs(column=${rowName},value=${jobMatch.get(rowName)})}" th:text="${jobMatch.get(rowName)}"></a></td>
             </tr>
-
-
         </table>
 
 
